@@ -1,14 +1,21 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> ans = new ArrayList<>();        
-        for(int i=0;i<numRows;i++){
-            List<Integer> row = new ArrayList<>(Collections.nCopies(i+1, 1));
+         List<List<Integer>> ans = new ArrayList<>();
 
-            for(int j=1;j<i;j++){
-                row.set(j, ans.get(i-1).get(j-1) + ans.get(i-1).get(j));
+        for (int i = 1; i <= numRows; i++) {
+            List<Integer> row = new ArrayList<>();
+            int prev = 1;
+
+            row.add(1);
+
+            for (int j = 1; j < i; j++) {
+                prev = (prev * (i - j)) / j;
+                row.add(prev);
             }
+
             ans.add(row);
         }
+
         return ans;
     }
 }

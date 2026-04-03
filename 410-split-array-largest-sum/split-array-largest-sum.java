@@ -2,7 +2,6 @@ class Solution {
     public int splitArray(int[] nums, int k) {
         int l = Integer.MIN_VALUE;
         int r = 0;
-        int ans =0;
         for (int i : nums) {
             l = Math.max(l, i);
             r += i;
@@ -21,13 +20,12 @@ class Solution {
                 }
             }
             if (c <= k) {
-                ans = mid;
                 r = mid - 1;
             } else {
                 l = mid + 1;
             }
 
         }
-        return ans;
+        return l;
     }
 }

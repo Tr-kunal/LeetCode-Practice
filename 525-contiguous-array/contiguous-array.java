@@ -15,7 +15,6 @@ class Solution {
             int diff = zero-one;
             if(diff==0){
                 ans = Math.max(ans,i+1);
-                continue;
             }
             if(map.containsKey(diff)){
                 int len = i-map.get(diff);

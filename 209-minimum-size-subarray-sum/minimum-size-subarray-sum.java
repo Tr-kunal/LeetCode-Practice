@@ -1,18 +1,21 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
-        int l = 0;
-        int h = 0;
-        int ans = Integer.MAX_VALUE;
-        int sum = 0;
-        while(h<nums.length){
-            sum+=nums[h];
-            h++;
+        int i=0;
+        int j=0;
+        int sum=0;
+        int min=Integer.MAX_VALUE;
+        while(i<nums.length){
+            sum+=nums[i];
+            i++;
             while(sum>=target){
-                ans = Math.min(ans,h-l);
-                sum-=nums[l];
-                l++;
+                sum-=nums[j];
+                min=Math.min(min,i-j);
+                j++;
+            
             }
+
         }
-        return ans == Integer.MAX_VALUE ? 0 : ans;
+        if(min==Integer.MAX_VALUE) return 0;
+        else return min;
     }
 }
